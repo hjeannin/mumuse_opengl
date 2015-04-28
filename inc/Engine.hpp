@@ -18,10 +18,11 @@ public:
 	SDL_Window			*window;
 	SDL_GLContext		context;
 	Camera				*camera;
-	int					x_res;
-	int					y_res;
 	float				*vertex_tab;
 	bool				moving;
+
+	int					x_res;
+	int					y_res;
 	int					fov;
 	double				z_near;
 	double				z_far;

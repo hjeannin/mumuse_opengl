@@ -127,9 +127,10 @@ Engine::init(void)
 		return (sdlError(0));
 	if (!(this->context = SDL_GL_CreateContext(this->window)))
 		return (sdlError(0));
-
 	this->camera = new Camera();
-	this->setFOV(70);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(this->fov, (double)this->x_res / (double)this->y_res, this->z_near, this->z_far);
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -138,6 +139,7 @@ Engine::init(void)
 	glEnable(GL_BLEND);
 	glShadeModel(GL_SMOOTH);
 
+	// Vertex reader
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, this->vertex_tab);
 
 	this->initLight();
