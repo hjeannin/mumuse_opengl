@@ -220,9 +220,11 @@ Engine::render(void)
  	this->renderTriangleArray(0, PARTY_START);
 
  	glEnable(GL_LIGHTING); // light ON
- 	this->renderTriangleArray(PARTY_START, PARTY_SIZE);
+	this->renderTriangleArray(PARTY_START, PARTY_SIZE);
+ 	this->renderPointArray(0, 30);
 
-//	switchLight(false, false, false);
+
+	// switchLight(false, false, false);
 	if (this->moving == true)
 		this->moveYourBody(PARTY_START, PARTY_SIZE);
  	glDisable(GL_LIGHTING); // light OFF
