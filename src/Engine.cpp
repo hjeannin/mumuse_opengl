@@ -145,8 +145,8 @@ Engine::init(void)
 	this->initLight();
 	this->moving = false;
 
-	this->makeWTF(0, PARTY_SIZE);
-//	this->makeCube(1.0);
+	this->makeWTF(PARTY_START, PARTY_SIZE);
+	this->makeCube(0.3);
 	return (0);
 }
 
@@ -211,12 +211,15 @@ Engine::render(void)
 //	this->renderShape();
 	//this->renderArray(map->ground_point_array, map->getMap_Size() * map->getMap_Size() * 3);
 
- 	glEnable(GL_LIGHTING); // light ON
+// 	glEnable(GL_LIGHTING); // light ON
 
 //	switchLight(true, true, true);
 
- 	this->renderPointArray(0, PARTY_START);
-// 	this->renderTriangleArray(0, PARTY_START);
+// 	this->renderPointArray(0, PARTY_START);
+ 	glDisable(GL_LIGHTING); // light OFF
+ 	this->renderTriangleArray(0, PARTY_START);
+
+ 	glEnable(GL_LIGHTING); // light ON
  	this->renderTriangleArray(PARTY_START, PARTY_SIZE);
 
 //	switchLight(false, false, false);
