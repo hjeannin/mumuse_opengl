@@ -143,18 +143,27 @@ Engine::init(void)
 	// Vertex reader
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, this->vertex_tab);
 
-	this->initLight();
+	initLight();
 	this->moving = false;
 
-	this->makeCube(0.4);
-	this->makeWTF(PARTY_START, PARTY_SIZE);
-	for (i = 0; i < 336; i++)
+	// Generate and print points
+	makeCube(0.4);
+	makeWTF(PARTY_START, PARTY_SIZE);
+	printArray(0, 336);
+	return (0);
+}
+
+void
+Engine::printArray(int start, int end)
+{
+	int i;
+
+	for (i = start; i < end; i++)
 	{
 		if (i % 10 == 0)
 			std::cout << std::endl;
 		std::cout << "(" << i << ")[" << this->vertex_tab[i] << "] ";
 	}
-	return (0);
 }
 
 void
@@ -213,17 +222,17 @@ Engine::render(void)
 	glLoadIdentity();
 	this->camera->look();
 
-	this->renderAxes();
+	renderAxes();
 
 //	this->renderShape();
 
- 	glEnable(GL_LIGHTING); // light ON
+ 	renderPointArray(0, PARTY_START);
 
- 	this->renderPointArray(0, PARTY_START);
-	this->renderTriangleArray(PARTY_START, PARTY_SIZE);
+ 	glEnable(GL_LIGHTING); // light ON
+	renderTriangleArray(PARTY_START, PARTY_SIZE);
 
 	if (this->moving == true)
-		this->moveYourBody(PARTY_START, PARTY_SIZE);
+		moveYourBody(PARTY_START, PARTY_SIZE);
 
  	glDisable(GL_LIGHTING); // light OFF
 

@@ -45,6 +45,7 @@ public:
 	void	moveYourBody(int start, int size);
 	void	makeWTF(int start, int size);
 	void	makeCube(float s);
+	void	printArray(int start, int end);
 	void	renderTriangleArray(int start, int size);
 	void	renderPointArray(int start, int size);
 	int		sdlError(int code);
