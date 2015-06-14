@@ -212,20 +212,19 @@ Engine::render(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 	this->camera->look();
+
 	this->renderAxes();
 
-//	this->makeWTF(PARTY_START, PARTY_SIZE);
 //	this->renderShape();
-	//this->renderArray(map->ground_point_array, map->getMap_Size() * map->getMap_Size() * 3);
-
-	// switchLight(false, false, false);
-	// switchLight(true, true, true);
 
  	glEnable(GL_LIGHTING); // light ON
+
  	this->renderPointArray(0, PARTY_START);
 	this->renderTriangleArray(PARTY_START, PARTY_SIZE);
+
 	if (this->moving == true)
 		this->moveYourBody(PARTY_START, PARTY_SIZE);
+
  	glDisable(GL_LIGHTING); // light OFF
 
 	glFlush();
