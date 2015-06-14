@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include <ctime>
 #include "Engine.hpp"
-#include "Map.hpp"
 
 int				main()
 {
