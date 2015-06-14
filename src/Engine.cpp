@@ -218,14 +218,12 @@ Engine::render(void)
 //	this->renderShape();
 	//this->renderArray(map->ground_point_array, map->getMap_Size() * map->getMap_Size() * 3);
 
+	// switchLight(false, false, false);
+	// switchLight(true, true, true);
+
  	glEnable(GL_LIGHTING); // light ON
-
-//	switchLight(true, true, true);
-
  	this->renderPointArray(0, PARTY_START);
- 	this->renderTriangleArray(PARTY_START, PARTY_SIZE);
-
-//	switchLight(false, false, false);
+	this->renderTriangleArray(PARTY_START, PARTY_SIZE);
 	if (this->moving == true)
 		this->moveYourBody(PARTY_START, PARTY_SIZE);
  	glDisable(GL_LIGHTING); // light OFF
