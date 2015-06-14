@@ -110,6 +110,7 @@ Engine::initLight(void)
 int
 Engine::init(void)
 {
+	int i;
 	this->x_res = 1920;
 	this->y_res = 1080;
 	this->fov = 70;
@@ -145,8 +146,14 @@ Engine::init(void)
 	this->initLight();
 	this->moving = false;
 
-	this->makeWTF(0, PARTY_SIZE);
-//	this->makeCube(1.0);
+	this->makeCube(0.4);
+	this->makeWTF(PARTY_START, PARTY_SIZE);
+	for (i = 0; i < 336; i++)
+	{
+		if (i % 10 == 0)
+			std::cout << std::endl;
+		std::cout << "(" << i << ")[" << this->vertex_tab[i] << "] ";
+	}
 	return (0);
 }
 
@@ -216,7 +223,6 @@ Engine::render(void)
 //	switchLight(true, true, true);
 
  	this->renderPointArray(0, PARTY_START);
-// 	this->renderTriangleArray(0, PARTY_START);
  	this->renderTriangleArray(PARTY_START, PARTY_SIZE);
 
 //	switchLight(false, false, false);
@@ -330,7 +336,7 @@ void
 Engine::renderPointArray(int start, int size)
 {
 	glEnableVertexAttribArray(0);
-	glDrawArrays(GL_POINTS, start, size);
+	glDrawArrays(GL_POINTS, start, size/3);
 	glDisableVertexAttribArray(0);
 }
 
